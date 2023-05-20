@@ -38,14 +38,13 @@ void setup()
     // Print the updated credentials
     Serial.println("Updated SSID: " + String(ssid));
     Serial.println("Updated Password: " + String(password));
-    
+
     request->send(200, "text/plain", "Credentials updated");
     // Disconnect any connected clients
     WiFi.softAPdisconnect(true);
     // Configure ESP32 as an access point with new credentials
     WiFi.softAP(ssid, password);
 
-    
   } else {
     request->send(400, "text/plain", "Invalid credentials. SSID must not be empty and password must have at least 8 characters.");
   } });
