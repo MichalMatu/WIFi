@@ -3,7 +3,7 @@
 #include <SPIFFS.h>
 
 // Default network credentials
-char ssid[32] = "ESP32-Access-Point";
+char ssid[32] = "ESP32";
 char password[64] = "0123456789";
 
 // Create an instance of the AsyncWebServer
@@ -29,6 +29,7 @@ void setup()
               String submittedSSID = request->arg("ssid");
               String submittedPassword = request->arg("password");
 
+
               // Update the credentials
               strncpy(ssid, submittedSSID.c_str(), sizeof(ssid));
               strncpy(password, submittedPassword.c_str(), sizeof(password));
@@ -41,8 +42,7 @@ void setup()
               // Disconnect any connected clients
               WiFi.softAPdisconnect(true);
               // Configure ESP32 as an access point with new credentials
-              WiFi.softAP(ssid, password);
-            });
+              WiFi.softAP(ssid, password); });
 
   // Start the server
   server.begin();
