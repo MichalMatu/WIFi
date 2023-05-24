@@ -51,6 +51,13 @@ void setup()
 
   // Start the server
   server.begin();
+  // Print the IP address
+  Serial.println("Access point IP address: " + ip.toString());
+  // print the MAC address
+  Serial.println("MAC address: " + WiFi.softAPmacAddress());
+  // Print the SSID and password
+  Serial.println("SSID: " + String(ssid));
+  Serial.println("Password: " + String(password));
 }
 
 void loop()
